@@ -4,7 +4,7 @@ using namespace std;
 
 #define STACK_IS_EMPTY 1
 
-//Ê¹ÓÃÁ´±íÊµÏÖµÄÕ»
+//ä½¿ç”¨é“¾è¡¨å®žçŽ°çš„æ ˆ
 struct elem {
 	void* val;
 	struct elem* next;
@@ -57,7 +57,7 @@ void* Stack_pop(MyStack stack)
 	if (stack.count == 0)
 		return 0;
 
-	auto t = stack.head;      //Ê¹ÓÃC++11µÄ×Ô¶¯ÍÆ¶Ï¹¦ÄÜ
+	auto t = stack.head;      //ä½¿ç”¨C++11çš„è‡ªåŠ¨æŽ¨æ–­åŠŸèƒ½
 	stack.head = t->next;
 	stack.count--;
 	auto val = t->val;
