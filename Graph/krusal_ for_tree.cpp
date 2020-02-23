@@ -1,5 +1,5 @@
-//ÓÃkrusalÈ¥Éú³É×îĞ¡Éú³ÉÊ÷
-//¸ø³öÉú³Éµã£¬ÎŞÏòÓĞÈ¨Í¼
+//ç”¨krusalå»ç”Ÿæˆæœ€å°ç”Ÿæˆæ ‘
+//ç»™å‡ºç”Ÿæˆç‚¹ï¼Œæ— å‘æœ‰æƒå›¾
 
 #include<iostream>
 
@@ -8,17 +8,17 @@ using namespace std;
 
 struct Edge
 {
-	int src;             //¼ÇÂ¼±ßµÄÆğµã
-	int dest;			 //¼ÇÂ¼±ßµÄÖÕµã
-	int weight;			 //¼ÇÂ¼±ßµÄÈ¨Öµ
+	int src;             //è®°å½•è¾¹çš„èµ·ç‚¹
+	int dest;	     //è®°å½•è¾¹çš„ç»ˆç‚¹
+	int weight;	     //è®°å½•è¾¹çš„æƒå€¼
 };
  
 
 
 struct Graph
 {
-	int V, E;				//¼ÇÂ¼½áµãºÍ±ßµÄÊıÁ¿
-	struct Edge* edge;	    //¼ÇÂ¼±ßµÄĞÅÏ¢
+	int V, E;		    //è®°å½•ç»“ç‚¹å’Œè¾¹çš„æ•°é‡
+	struct Edge* edge;	    //è®°å½•è¾¹çš„ä¿¡æ¯
 };
 
 struct Graph* createGraph(int V, int E)
@@ -44,12 +44,12 @@ void  KruskalMST(struct Graph* graph)
 	int i = 0;			 
 
 
-	//¶ÔÍ¼µÄ±ß½øĞĞÅÅĞò£¬
+	//å¯¹å›¾çš„è¾¹è¿›è¡Œæ’åºï¼Œ
 	qsort(graph->edge, graph->E, sizeof(graph->edge[0]), myComp);
 
 	 subset* subsets = static_cast<subset*>(malloc(V * sizeof(struct subset)));
 
-	for (int v = 0; v < V; v++)			//³õÊ¼»¯subsetsÊı×é
+	for (int v = 0; v < V; v++)			//åˆå§‹åŒ–subsetsæ•°ç»„
 	{
 		subsets[v].parent = v;
 		subsets[v].rank = 0;
@@ -61,11 +61,11 @@ void  KruskalMST(struct Graph* graph)
 		
 		struct Edge next_edge = graph->edge[i++];
 
-		int x = find(subsets, next_edge.src);			//ÕÒ³öÏÂÒ»Ìõ±ßµÄÆğµãºÍÖÕµã
+		int x = find(subsets, next_edge.src);		           	   //æ‰¾å‡ºä¸‹ä¸€æ¡è¾¹çš„èµ·ç‚¹å’Œç»ˆç‚¹
 		int y = find(subsets, next_edge.dest);
 
 		
-		if (x != y)										//´æÔÚ¾ÍÉú³ÉÊ÷
+		if (x != y)							   //å­˜åœ¨å°±ç”Ÿæˆæ ‘
 		{
 			result(e++) = next_edge;
 			Union(subsets, x, y);
@@ -84,14 +84,14 @@ void  KruskalMST(struct Graph* graph)
 
 
 
-//ÓÃÀ´¼ÇÂ¼½áµãµÄ¸¸Ä¸µÄĞÅÏ¢
+//ç”¨æ¥è®°å½•ç»“ç‚¹çš„çˆ¶æ¯çš„ä¿¡æ¯
 struct subset
 {
 	int parent;
 	int rank;
 };
 
-//ÔÚsubsetsÊı×éÖĞÖÜµ½iµÄ¸¸½áµã
+//åœ¨subsetsæ•°ç»„ä¸­å‘¨åˆ°içš„çˆ¶ç»“ç‚¹
 int find(subset subsets[], int i)
 {
 	
@@ -101,13 +101,13 @@ int find(subset subsets[], int i)
 	return subsets[i].parent;
 }
 
-//°Ñx,yÁ½¸öµã±äÎªÊ÷µÄ½áµã
+//æŠŠx,yä¸¤ä¸ªç‚¹å˜ä¸ºæ ‘çš„ç»“ç‚¹
 void Union( subset subsets[], int x, int y)
 {
 	int xroot = find(subsets, x);
 	int yroot = find(subsets, y);
 
-	if (subsets[xroot].rank < subsets[yroot].rank)		//ÕÒ³örankÖµ×î´óµÄ×îÎª¸¸½áµã
+	if (subsets[xroot].rank < subsets[yroot].rank)		//æ‰¾å‡ºrankå€¼æœ€å¤§çš„æœ€ä¸ºçˆ¶ç»“ç‚¹
 		subsets[xroot].parent = yroot;
 
 	else if (subsets[xroot].rank > subsets[yroot].rank)
@@ -121,7 +121,7 @@ void Union( subset subsets[], int x, int y)
 }
 
 
-//±È½Ïº¯Êı
+//æ¯”è¾ƒå‡½æ•°
 int myComp(const void* a, const void* b)
 {
 	 Edge* a1 = (Edge*)a;
