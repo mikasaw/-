@@ -31,7 +31,7 @@ void addEdge(struct Graph* g, int src, int dst, int weight)
 
 
 
-//ÓÃDijkstra ÕÒ³ö×î¶ÌÂ·¾¶
+//ç”¨Dijkstra æ‰¾å‡ºæœ€çŸ­è·¯å¾„
 void Dijkstra(struct Graph* graph, int src)
 {
 	int v = graph->vertexNum;
@@ -40,7 +40,7 @@ void Dijkstra(struct Graph* graph, int src)
 	mdist = static_cast<int *> (malloc(sizeof(int*) * v));
 	vset = static_cast<int*> (malloc(sizeof(int*) * v));
 
-	for (int i = 0; i < v; i++)                        //³õÊ¼»¯
+	for (int i = 0; i < v; i++)                        //åˆå§‹åŒ–æ•°ç»„
 		mdist[i] = INT_MAX, vset[i] = 0;
  
 	mdist[src] = 0;
@@ -52,7 +52,7 @@ void Dijkstra(struct Graph* graph, int src)
 		int u, minval;
 		for (int i = 0; i < v; i++)
 		{
-			if (vset[i] == 0 && mdist[i] < INT_MAX)   // ½áµãÃ»±»·ÃÎÊ¹ıÇÒ´æÔÚ±ß
+			if (vset[i] == 0 && mdist[i] < INT_MAX)   // ç»“ç‚¹æ²¡è¢«è®¿é—®è¿‡ä¸”å­˜åœ¨è¾¹
 			{
 				minval = mdist[i];
 				u = i;
@@ -61,12 +61,12 @@ void Dijkstra(struct Graph* graph, int src)
 		vset[u] = 1;
 		for (int j = 0; j < v; j++)
 		{
-			if (!vset[v] && graph->edges[u][j] != INT_MAX       //Èç¹ûV½áµãÃ»ÓĞ±»·ÃÎÊ¹ıÇÒV½áµãµ½Ô´½áµãµÄ×î¶ÌÂ·¾¶´óÓÚÔ´½áµãµ½U½áµã¼ÓUJ±ßµÄ¾àÀë£¬	
-				&& mdist[u] + graph->edges[u][j] < mdist[v])    //¾Í¸üĞÂĞÂµÄ×îĞ¡Â·¾¶µ½mdist[v]¡£
+			if (!vset[v] && graph->edges[u][j] != INT_MAX          //å¦‚æœVç»“ç‚¹æ²¡æœ‰è¢«è®¿é—®è¿‡ä¸”Vç»“ç‚¹åˆ°æºç»“ç‚¹çš„æœ€çŸ­è·¯å¾„å¤§äºæºç»“ç‚¹åˆ°Uç»“ç‚¹åŠ UJè¾¹çš„è·ç¦»ï¼Œ	
+				&& mdist[u] + graph->edges[u][j] < mdist[v])   //å°±æ›´æ–°æ–°çš„æœ€å°è·¯å¾„åˆ°mdist[v]ã€‚
 				mdist[v] = mdist[u] + graph->edges[u][v];
 		}
 	}
-	//´òÓ¡×î¶ÌÂ·¾¶
+	//æ‰“å°æœ€çŸ­è·¯å¾„
 	for (int i = 0; i < v; i++)
 	{
 		if (mdist[i] != INT_MAX)
