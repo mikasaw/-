@@ -14,7 +14,7 @@ void filp(int arr[], int i)
 }
 
 
-//反转排序
+//进行反转排序
 int pancakeSort(int* arr, int n)
 {
 	for (int curr_size = n; curr_size > 1; --curr_size)
@@ -27,7 +27,7 @@ int pancakeSort(int* arr, int n)
 
 		if (maxElementIdx != curr_size - 1)
 		{
-			filp(arr, maxElementIdx);                          //进行递归反转数组
+			filp(arr, maxElementIdx);                     //进行递归反转数组
 			filp(arr, curr_size - 1);
 		}
 	}
