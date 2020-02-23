@@ -23,17 +23,17 @@ void beadSort(int* a, int len)			  //a -- 要排序的数组   len--为数组的
 		}
 	}
 
-	for (j = 0; j < max; j++)                  //让珠子往下落
+	for (j = 0; j < max; j++)                  //让最大值前的珠子往下落
 	{
-		for (sum = i = 0; i < len; i++)
+		for (sum = i = 0; i < len; i++)    //计算要取出的珠子的长度
 		{
 			sum += BEAD(i, j);
 			BEAD(i, j) = 0;
 		}
-		for (i = len - sum; i < len; i++)
+		for (i = len - sum; i < len; i++)  //放入珠子
 			BEAD(i, j) = 1;
 	}
-	for (i = 0; i < len; i++) 		   //下边有支点就保存不动
+	for (i = 0; i < len; i++) 		   //还原数组
 	{
 		for (j = 0; j < max && BEAD(i, j); j++)
 			a[i] = j;
