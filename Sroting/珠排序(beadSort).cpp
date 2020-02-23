@@ -1,5 +1,6 @@
-
-void beadSort(int* a, int len)				  //a -- 要排序的数组   len--为数组的大小
+#include<iostream>
+using namespace std;
+void beadSort(int* a, int len)			  //a -- 要排序的数组   len--为数组的大小
 {
 	int i, j, max, sum;
 	unsigned char* beads;
