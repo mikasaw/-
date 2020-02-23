@@ -18,7 +18,7 @@ using namespace std;
 
 struct TrieNode
 {
-	struct TrieNode* childern[ALPHABET_SIZE];    //记录26根指针的指针数组
+	struct TrieNode* childern[ALPHABET_SIZE];   				 //记录26字符的指针数组
 	char character;								 //记录结点的字符值
 	bool isEndOfWord;							 //检查是否为字符串的最后有一个字符
 };
@@ -45,7 +45,7 @@ TrieNode* trieNodeInit()
 void insert(TrieNode* root, char* word)
 {
 	 
-	if (strlen(word) - 1 != 0)             //检查字符串是否为空字符
+	if (strlen(word) - 1 != 0)            			 //检查字符串是否为空字符
 	{
 		char character = *word;
 		if (root->childern[character - 97] == NULL)
