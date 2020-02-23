@@ -1,5 +1,5 @@
 
-//¶ş·Ö²éÕÒÊ÷£¬
+//äºŒåˆ†æŸ¥æ‰¾æ ‘ï¼Œ
 
 
 
@@ -18,7 +18,7 @@ struct node {
  
 int treesize = 0;
 
-//½Úµã´´½¨
+//èŠ‚ç‚¹åˆ›å»º
 node* newnode(int data)
 {
 	//node* newnode = (node*)malloc(sizeof(node));
@@ -29,20 +29,20 @@ node* newnode(int data)
 	return newnode;
 }
 
-//½Úµã²åÈë
+//èŠ‚ç‚¹æ’å…¥
 node* insert(node* root, int data)
 {
 	if (root == NULL)
 		root = newnode(data);
 	else if (root->data > data)
-		root->left = insert(root->left, data);   // Ïò×óµİ¹é²éÕÒµ½ºÏÊÊµÄÎ»ÖÃ½øĞĞ²åÈë
+		root->left = insert(root->left, data);   // å‘å·¦é€’å½’æŸ¥æ‰¾åˆ°åˆé€‚çš„ä½ç½®è¿›è¡Œæ’å…¥
 	else if (root->data < data)
-		root->right = insert(root->right, data); // ÏòÓÒµİ¹é²éÕÒµ½ºÏÊÊµÄÎ»ÖÃ½øĞĞ²åÈë
+		root->right = insert(root->right, data); // å‘å³é€’å½’æŸ¥æ‰¾åˆ°åˆé€‚çš„ä½ç½®è¿›è¡Œæ’å…¥
 
 	return root;
 }
 
-//»ñÈ¡×î´óÖµ   ÔÚÊ÷µÄ×îÓÒ±ß  Ò»Ö±µİ¹éÑ°ÕÒÏÂÈ¥
+//è·å–æœ€å¤§å€¼,åœ¨æ ‘çš„æœ€å³è¾¹,ä¸€ç›´é€’å½’å¯»æ‰¾ä¸‹å»
 node*  getMax(node* root) 
 {
 	
@@ -54,7 +54,7 @@ node*  getMax(node* root)
 	}
 }
 
-//½ÚµãÉ¾³ı
+//èŠ‚ç‚¹åˆ é™¤
 node* Delete(node* root, int data) {
 	if (root == NULL)
 		return root;
@@ -65,30 +65,30 @@ node* Delete(node* root, int data) {
 		root->left = Delete(root->left, data);
 	else
 	{
-			if (root->right == NULL || root->left == NULL)  //½ÚµãµÄ×óÓÒ½Úµã¶¼Îª¿Õ£¬Ö±½ÓÉ¾³ı
+			if (root->right == NULL || root->left == NULL)  //èŠ‚ç‚¹çš„å·¦å³èŠ‚ç‚¹éƒ½ä¸ºç©ºï¼Œç›´æ¥åˆ é™¤
 			{
 			free(root);
 			return NULL;
 			}
-			else if (root->left == NULL )                  //×ó½ÚµãÎª¿Õ£¬É¾³ı¸¸½Úµã£¬ÓÒ½Úµã±ä³ÉĞÂµÄ¸¸½Úµã£¬
+			else if (root->left == NULL )                  //å·¦èŠ‚ç‚¹ä¸ºç©ºï¼Œåˆ é™¤çˆ¶èŠ‚ç‚¹ï¼Œå³èŠ‚ç‚¹å˜æˆæ–°çš„çˆ¶èŠ‚ç‚¹ï¼Œ
 			{
 			auto* tmp = root;
 			root = root->right;
 			free(tmp);
 			return root;
 			}
-			else if (root->right == NULL)                  //ÓÒ½ÚµãÎª¿Õ£¬É¾³ı¸¸½Úµã£¬×ó½Úµã±ä³ÉĞÂµÄ¸¸½Úµã
+			else if (root->right == NULL)                  //å³èŠ‚ç‚¹ä¸ºç©ºï¼Œåˆ é™¤çˆ¶èŠ‚ç‚¹ï¼Œå·¦èŠ‚ç‚¹å˜æˆæ–°çš„çˆ¶èŠ‚ç‚¹
 			{
 			auto * tmp = root;
 			root = root->right;
 			free(tmp);
 			return root;
 			}
-			else											//×óÓÒ½Úµã¶¼²»Îª¿Õ
+			else						//å·¦å³èŠ‚ç‚¹éƒ½ä¸ä¸ºç©º
 			{
-				auto * tmp = getMax(root->left);			//ÕÒµ½´Ë½ÚµãÎª¸ùµÄÊ÷µÄ×î´óÖµ
-				root->data = tmp->data;						//°Ñ×î´óÖµ¸³Öµ¸ø¸ù½Úµã
-				root->left = Delete(root->left, tmp->data); //ÔÙ°Ñ×î´óÖµ´ÓÊıÖĞÉ¾³ı
+				auto * tmp = getMax(root->left);	//æ‰¾åˆ°æ­¤èŠ‚ç‚¹ä¸ºæ ¹çš„æ ‘çš„æœ€å¤§å€¼
+				root->data = tmp->data;			//æŠŠæœ€å¤§å€¼èµ‹å€¼ç»™æ ¹èŠ‚ç‚¹
+				root->left = Delete(root->left, tmp->data); //å†æŠŠæœ€å¤§å€¼ä»æ•°ä¸­åˆ é™¤
 			}
 	}
 
@@ -96,7 +96,7 @@ node* Delete(node* root, int data) {
 }
 
 
-//½Úµã²éÕÒ   µİ¹é²éÕÒ£¬±È¸ùÖµ´ó¾ÍÏò×ó²éÕÒ£¬±È¸ùÖµĞ¡¾ÍÏòÓÒ²éÕÒ
+//èŠ‚ç‚¹æŸ¥æ‰¾   é€’å½’æŸ¥æ‰¾ï¼Œæ¯”æ ¹å€¼å¤§å°±å‘å·¦æŸ¥æ‰¾ï¼Œæ¯”æ ¹å€¼å°å°±å‘å³æŸ¥æ‰¾
 int  findnode(node * root,int data)   
 {
 	if (root == NULL)
@@ -113,7 +113,7 @@ int  findnode(node * root,int data)
 }
 
 
-//Ê÷µÄ¸ß¶È   ·Ö±ğ×óÓÒ¸÷±éÀúÒ»±é¼ÆËã¸ß¶È
+//æ ‘çš„é«˜åº¦   åˆ†åˆ«å·¦å³å„éå†ä¸€éè®¡ç®—é«˜åº¦
 int height(node* root) 
 {
 	int LeftTreeHight = 0;
@@ -137,7 +137,7 @@ int height(node* root)
 }
 
 
-//Çå³ıËùÓĞ½Úµã   µİ¹éÇå³ıËùÓĞ½Úµã
+//æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹   é€’å½’æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
 void clearNode(node* root)
 {
 	if (root == NULL)
@@ -154,7 +154,7 @@ void clearNode(node* root)
 }
 
 
-//ÏÈĞòµİ¹é±éÀúÊ÷
+//å…ˆåºé€’å½’éå†æ ‘
 void preOrderTraversal(node* root)
 {
 	if (root == NULL)
@@ -169,7 +169,7 @@ void preOrderTraversal(node* root)
 
 
 
-//ÖĞĞòµİ¹é±éÀúÊ÷
+//ä¸­åºé€’å½’éå†æ ‘
 void inOrderTraversal(node* root)
 {
 	if (root == NULL)
@@ -183,7 +183,7 @@ void inOrderTraversal(node* root)
 
 
 
-//ºóĞòµİ¹é±éÀúÊ÷
+//ååºé€’å½’éå†æ ‘
 void postOrderTraversal(node* root)
 {
 	if (root == NULL)
