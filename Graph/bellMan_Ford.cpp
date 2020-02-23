@@ -11,7 +11,7 @@ struct Edge {
 struct Graph
 {
 	int vertexNum;            	  //记录结点的数目
-	int edgeNum;			  // 记录边的数目
+	int edgeNum;			  //记录边的数目
 	struct Edge* edges;		  //记录边的信息
 };
 
