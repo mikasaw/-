@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//ÓÃFloyd-Warshall ÕÒ³ö×î¶ÌÂ·¾¶
+//ç”¨Floyd-Warshall æ‰¾å‡ºæœ€çŸ­è·¯å¾„
 
 
 struct Graph {
@@ -19,17 +19,17 @@ void FloydWarshall(struct Graph* graph)
 	
 	int  dist[v][v];
 	
-	for (int i = 0; i < v; i++)               //ÏÈÓÃÊı×é°Ñ±ßµÄĞÅÏ¢¼ÇÂ¼ÏÂÀ´
+	for (int i = 0; i < v; i++)               //å…ˆç”¨æ•°ç»„æŠŠè¾¹çš„ä¿¡æ¯è®°å½•ä¸‹æ¥
 	{
 		for (int j = 0; i < v; j++)
 			dist[i][j] = graph->edges[i][j];
 	}
 
-	//¼ÆËã¾àÀë
+	//è®¡ç®—è·ç¦»
 	for (int k = 0; k < v; k++)
 		for (int i = 0; i < v; i++)
 			for (int j = 0; j < v; j++)
-				if (dist[i][k] != INT_MAX &&              //¶¯Ì¬ÕÒµ½i,jÁ½µã¼äµÄ×îĞ¡¾àÀëÂ·¾¶²¢¼ÇÂ¼ÏÂÀ´
+				if (dist[i][k] != INT_MAX &&              //åŠ¨æ€æ‰¾åˆ°i,jä¸¤ç‚¹é—´çš„æœ€å°è·ç¦»è·¯å¾„å¹¶è®°å½•ä¸‹æ¥
 					dist[i][k] + dist[k][j] < dist[i][j])
 					dist[i][j] = dist[i][k] + dist[k][j];
 
@@ -42,7 +42,7 @@ void FloydWarshall(struct Graph* graph)
 
 
 
-//Í¼µÄ´´½¨
+//å›¾çš„åˆ›å»º
 void createGraph(struct Graph* g, int v)
 {
 	g->edges = (int**)malloc(v * sizeof(int*));
@@ -59,14 +59,14 @@ void createGraph(struct Graph* g, int v)
 	}
 }
 
-//ÔÚÍ¼ÉÏÌí¼Ó±ß
+//åœ¨å›¾ä¸Šæ·»åŠ è¾¹
 void addEdge(struct Graph* g, int src, int dst, int weight)
 {
 	g->edges[src][dst] = weight;
 }
 
 
-//´òÓ¡Õû¸öÍ¼
+//æ‰“å°æ•´ä¸ªå›¾
 void print(int dist[], int v)
 {
 	cout << "vertex distance" << endl;
