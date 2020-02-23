@@ -8,9 +8,9 @@ void shellSort(int array[], int len)
 		for (i = gap; i < len; i++)
 			for (j = i - gap; j >= 0 && array[j] > array[j + gap]; j = j - gap)
 					{
-						int temp = array[j];
-						array[j] = array[j + gap];
-						array[j + gap] = temp;
+					    int temp = array[j];
+					    array[j] = array[j + gap];
+					    array[j + gap] = temp;
  					}
 
 }
