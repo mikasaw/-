@@ -13,11 +13,11 @@ int binarySearch(int arr[], int key, int low, int high)
 		return mid + 1;
 	else if (arr[mid] > key)						  //中间点的值比寻找的key值大
 	{
-		return binarySearch(arr, key, low, mid - 1);  //向中间的左边寻找
+		return binarySearch(arr, key, low, mid - 1);  			  //向中间的左边寻找
 
 	}
 	else
-		return binarySearch(arr, key, mid + 1, high);  //否则向中间点的右边寻找
+		return binarySearch(arr, key, mid + 1, high); 			  //否则向中间点的右边寻找
 }
 
 void insertionSort(int arr[], int size)
