@@ -12,7 +12,7 @@ void bubbleSort(int arr[], int size)
 				int temp = arr[i];
 				arr[i] = arr[j + 1];
 				arr[j + 1] = temp;
-	  	}
+	  		}
 	}
 }
 
