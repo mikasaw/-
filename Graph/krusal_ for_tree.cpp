@@ -49,7 +49,7 @@ void  KruskalMST(struct Graph* graph)
 
 	 subset* subsets = static_cast<subset*>(malloc(V * sizeof(struct subset)));
 
-	for (int v = 0; v < V; v++)			//初始化subsets数组
+	for (int v = 0; v < V; v++)					         //初始化subsets数组
 	{
 		subsets[v].parent = v;
 		subsets[v].rank = 0;
