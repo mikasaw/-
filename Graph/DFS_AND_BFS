@@ -1,5 +1,4 @@
-﻿// BFS.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
+
 
 #include <iostream>
 using namespace std;
@@ -29,17 +28,17 @@ struct node {
 
 struct Graph
 { 
-	int numVertices;                   //顶点的数量
-	struct node** adjlists;            //结点的信息表
-	int* visited;					   //是否遍历过的标志位的记录表
+	int numVertices;                  //顶点的数量
+	struct node** adjlists;           //结点的信息表
+	int* visited;			  //是否遍历过的标志位的记录表
 };
 
 
-struct node* creatNode(int v);						//图结点的创建
-struct Graph* creatGraph(int vertices);				//生成图
+struct node* creatNode(int v);				//图结点的创建
+struct Graph* creatGraph(int vertices);			//生成图
 void addEdge( Graph* Grph, int src, int dest);		//在图上添加边
-void printGrapg(Graph* graph);						//创建一个队列
-void bfs( Graph* Grph, int startVertex);			//广度优先遍历
+void printGrapg(Graph* graph);				//创建一个队列
+void bfs( Graph* Grph, int startVertex);		//广度优先遍历
 
 
 
@@ -47,20 +46,20 @@ void bfs( Graph* Grph, int startVertex);			//广度优先遍历
 void bfs( Graph* graph, int startVertex) {
 	queue* q = creatQueue();
 	graph->visited[startVertex] = 1;
-	enqueue(q, startVertex);												//先把开始的结点入队
+	enqueue(q, startVertex);				    		    //先把开始的结点入队
 	cout << "start traversal from vertex" << startVertex << endl;
 
 	while (!isEmpty(q))
 	{
 		cout << pollQueue(q);                                               //把遍历的结点打印
-		int currentVertex = dequeue(q);										//把队列头的结点取出
+		int currentVertex = dequeue(q);				            //把队列头的结点取出
 
 		 node* temp = graph->adjlists[currentVertex];                       //在图中结点信息表中把此结点的信息取出
 
-		while (temp)													    //遍历取出结点的连接结点
+		while (temp)							    //遍历取出结点的连接结点
 		{
 			int adjVertex = temp->vertex;
-			if (graph->visited[adjVertex] == 0)								//如果没有遍历过就入队列
+			if (graph->visited[adjVertex] == 0)			    //如果没有遍历过就入队列
 			{
 				graph->visited[adjVertex] = 1;
 				enqueue(q, adjVertex);
@@ -76,11 +75,11 @@ void bfs( Graph* graph, int startVertex) {
 void dfs(struct Graph* graph, int vertex)
 {
 
-	node* temp = graph->adjlists[vertex];
-	graph->visited[vertex] = 1;							//更改标志表，表明已经遍历过				
+	node* temp = graph->adjlists[vertex]
+	graph->visited[vertex] = 1;				//更改标志表，表明已经遍历过				
 	cout << vertex;
 
-	while (temp != NULL)								//结点有子结点，继续遍历下去
+	while (temp != NULL)					//结点有子结点，继续遍历下去
 	{
 		int connectedVertex = temp->vertex;
 		if (graph->visited[connectedVertex] == 0)      //如果结点没被遍历过，就进行递归
@@ -222,14 +221,3 @@ void printGrapg(struct Graph* graph)
 
 }
 
-
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
