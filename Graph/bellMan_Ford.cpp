@@ -2,49 +2,49 @@
 
 using namespace std;
 
-//´æ´¢±ßµÄĞÅÏ¢
+//å­˜å‚¨è¾¹çš„ä¿¡æ¯
 struct Edge {
 	int src, dst, weight;
 };
 
-//´æ´¢Í¼
+//å­˜å‚¨å›¾
 struct Graph
 {
-	int vertexNum;            //¼ÇÂ¼½áµãµÄÊıÄ¿
-	int edgeNum;			  // ¼ÇÂ¼±ßµÄÊıÄ¿
-	struct Edge* edges;		  //¼ÇÂ¼±ßµÄĞÅÏ¢
+	int vertexNum;            	  //è®°å½•ç»“ç‚¹çš„æ•°ç›®
+	int edgeNum;			  // è®°å½•è¾¹çš„æ•°ç›®
+	struct Edge* edges;		  //è®°å½•è¾¹çš„ä¿¡æ¯
 };
 
 
-//ÓÃBellman-FordÑ°ÕÒ×î¶ÌÂ·¾¶
+//ç”¨Bellman-Fordå¯»æ‰¾æœ€çŸ­è·¯å¾„
 void BellmanFord(struct Graph* graph, int src)
 {
 	int V = graph->vertexNum;
 	int E = graph->edgeNum;
 	int* dist = static_cast<int*>(malloc(sizeof(int*) * V));
 
-	//¾àÀëÊı×é³õÊ¼»¯
+	//è·ç¦»æ•°ç»„åˆå§‹åŒ–
 	for (int i = 0; i < V; i++)
 	{
 		dist[i] = INT_MAX;
 	}
 	dist[src] = 0;
 
-	//¼ÆËã×î¶ÌÂ·¾¶
-	for (int i = 0; i < V; i++)				//±éÀúÃ¿¸ö½áµã
+	//è®¡ç®—æœ€çŸ­è·¯å¾„
+	for (int i = 0; i < V; i++)		                        //éå†æ¯ä¸ªç»“ç‚¹
 	{
-		for (int j = 0; j < E; j++)         //°Ñ i½áµãµÄ±ßµÄĞÅÏ¢¼ÇÂ¼
+		for (int j = 0; j < E; j++)        			 //æŠŠ iç»“ç‚¹çš„è¾¹çš„ä¿¡æ¯è®°å½•
 		{
 			int u = graph->edges[j].src;
 			int v = graph->edges[j].dst;
 			int w = graph->edges[j].weight;
 			
-			if (dist[u] != INT_MAX && dist[u] + w < dist[v])	//Èç¹ûÔ´½áµãµ½u½áµãµÄ¾àÀë¼ÓuvÁ½µãµÄ¾àÀëĞ¡ÓÚÔ´½áµãµ½v½áµãµÄ¾àÀë
-				dist[v] = dist[u] + w;							//¾ÍÔÚdist±íÉÏ¸üĞÂ					
+			if (dist[u] != INT_MAX && dist[u] + w < dist[v])	//å¦‚æœæºç»“ç‚¹åˆ°uç»“ç‚¹çš„è·ç¦»åŠ uvä¸¤ç‚¹çš„è·ç¦»å°äºæºç»“ç‚¹åˆ°vç»“ç‚¹çš„è·ç¦»
+				dist[v] = dist[u] + w;				//å°±åœ¨distè¡¨ä¸Šæ›´æ–°					
 		}
 	}
 
-	//ÅĞ¶ÏÄÚ²¿ÊÇ·ñÓĞ»·
+	//åˆ¤æ–­å†…éƒ¨æ˜¯å¦æœ‰ç¯
 	for (int j = 0; j < E; j++)
 	{
 		int u = graph->edges[j].src;
@@ -52,7 +52,7 @@ void BellmanFord(struct Graph* graph, int src)
 		int w = graph->edges[j].weight;
 
 		if (dist[u] != INT_MAX && dist[u] + w < dist[v])
-			cout << "ÄÚ²¿ÓĞ»·" << endl;
+			cout << "å†…éƒ¨æœ‰ç¯" << endl;
 			return;
 	}
 	print(dist, V);
@@ -62,7 +62,7 @@ void BellmanFord(struct Graph* graph, int src)
 
 
 
-//Í¼µÄ´´½¨
+//å›¾çš„åˆ›å»º
 void creatGraph(struct Graph* G, int V, int E)
 {
 	G->vertexNum = V;
@@ -71,7 +71,7 @@ void creatGraph(struct Graph* G, int V, int E)
 
 }
 
-//°Ñ±ßÌí¼Óµ½Í¼ÉÏ
+//æŠŠè¾¹æ·»åŠ åˆ°å›¾ä¸Š
 void addEdge(struct Graph* G, int src, int dst, int weight)
 {
 	static int ind;
@@ -83,7 +83,7 @@ void addEdge(struct Graph* G, int src, int dst, int weight)
 
 }
 
-//ÏÔÊ¾¾àÀë
+//æ˜¾ç¤ºè·ç¦»
 void print(int dist[], int V)
 {
 	for (int i = 0; i < V; i++)
