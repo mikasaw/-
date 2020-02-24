@@ -1,18 +1,21 @@
+
+
+
 //跳跃查找法
 #define min(x,y)((x)<(y)?(x):(y))
-int jump_search(int* arr, int x ,int n)   //x为寻找的值，n为跳跃步伐系数
+int jump_search(int* arr, int x ,int n)   	 //x为寻找的值，n为跳跃步伐系数
 { 
-	int step = floor(sqrt(n));       //floor()向下去整，
+	int step = floor(sqrt(n));      	 //floor()向下去整，
 	int prev = 0;
-	while (*(arr+min(step,n)-1)<x)   //跳跃最小步伐之后还是比寻找的x值小，继续跳跃
+	while (*(arr+min(step,n)-1)<x)   	 //跳跃最小步伐之后还是比寻找的x值小，继续跳跃
 	{
 		prev = step;
 		step += floor(sqrt(n));		 
-		if (prev >= n)				 //超出范围没有找到
+		if (prev >= n)			 //超出范围没有找到
 			return -1;
 	}
-	while (*(arr+prev)<x)			//找到比寻找值大的一步，就对前面两步之间进行线性查找
-	{							
+	while (*(arr+prev)<x)			 //找到比寻找值大的一步，就对前面两步之间进行线性查找
+	{						
 		prev = prev + 1;
 		if (prev == fmin(step, n))
 			return -1;
