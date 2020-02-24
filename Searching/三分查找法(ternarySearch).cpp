@@ -2,7 +2,7 @@
 
 
 
-// 三分查找法  把数组分为三部分在持续递归查找下去
+// 三分查找法  把数组分为三部分再持续递归查找下去
 int ternarySearch(int l, int r, int key, int arr[])
 {
 	if (r >= 1)
