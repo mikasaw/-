@@ -12,6 +12,9 @@
 解释: 输入不存在公共前缀。
 说明:
 所有输入只包含小写字母 a-z 。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/longest-common-prefix
 */
   
  class Solution {
