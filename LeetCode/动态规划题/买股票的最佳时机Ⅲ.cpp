@@ -40,7 +40,7 @@ public:
             int temp = dpi0;
             dpi0 = max(dpi0,dpi1 +prices[i]);   //手里没有股票，从前面就没有或者有股票并且在这时销售出去。
             dpi1 = max(dpi1,dp2i0-prices[i]);   //手里有股票，两种情况，从一开始就没有，或者是上一天现没有现在刚买入。
-            dp2i0 =temp; 
+            dp2i0 =temp;                        //把上一个手里没股票的情况记录下来
             
         }
         return dpi0;
