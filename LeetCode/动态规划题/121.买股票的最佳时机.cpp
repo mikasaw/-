@@ -63,3 +63,28 @@ public:
         return result;
     }
 };
+
+
+
+//3.动态规划法，使用状态机记录
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+       int n = prices.size();
+       int dp[n][2];
+     for(int i =0;i<prices.size();i++)
+     {
+         if(i == 0)
+         {
+             dp[i][1] = -prices[i];
+             dp[i][0] = 0;
+             continue;
+         }
+        dp[i][1]=max(dp[i-1][1],-prices[i]);
+        dp[i][0] = max(dp[i-1][0],dp[i-1][1]+prices[i]);
+
+
+     }
+     return dp[n-1][0];
+    }
+};
