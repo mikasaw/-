@@ -29,3 +29,27 @@ public:
           }
 };
 
+
+
+
+//第二种递归
+class Solution {
+public:
+       
+    int  dfs(TreeNode* root,int maxDepth)
+      {
+          if(root == NULL )
+          return maxDepth;
+          int left_depth = dfs(root->left,maxDepth++);
+          int right_depth= dfs(root->right,maxDepth++);
+          return max(left_depth,right_depth);
+             
+      }
+      
+     int maxDepth(TreeNode* root) {
+         if(root == NULL)
+         return 0;
+         int depth =0;
+         return   dfs(root,depth);
+      }
+};
