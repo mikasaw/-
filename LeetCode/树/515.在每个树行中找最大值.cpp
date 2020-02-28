@@ -30,7 +30,7 @@ public:
         
         while(!q.empty())
         {
-            int max1 =INT_MIN;
+            int max1 =INT_MIN;                            //找个值来做比较的标准  
             int size = q.size();
             for(int i=0;i<size;i++)                       //遍历树的其中一行
             {    
