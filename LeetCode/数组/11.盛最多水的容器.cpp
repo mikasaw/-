@@ -19,28 +19,29 @@
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        stack<int >s ;
-        int cur = 1;
-        int i = 0;
-        int result =0;
-    for(int i =0;i<height.size();i++)
-      {
-          cur = i+1;
-         while ( cur < height.size() )
-          {
-            if(height[cur] >= height[i])
-              {
-               s.push(cur);
-              }
-              cur++;
-          }
-        int  stop = s.top();
-        s.pop();
-        int  dist = cur - i -1;
-        int  ve = dist * height[i];
-        result = max(result,ve);
-    }
+       int left = 0;
+       int right = height.size()-1;
+       int result = 0;
+       int ve= 0;
+       while(left < right)
+       {
+            
+           
+           if(height[left] < height[right])             //左边小就前进
+            {
+             ve = (right-left) * height[left];
+             result = max(result,ve);
+             left++;
+            }   
+           else                                         //右边小就后退
+            {
+                ve = (right-left) * height[right];
+                 result = max(result,ve);
+                 right --;
+            }
+       }
        return result;
     }
+
 
 };
