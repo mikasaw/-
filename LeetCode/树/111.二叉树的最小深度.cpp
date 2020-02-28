@@ -23,6 +23,21 @@
 
 //和前面求二叉树的最大深度的方法差不多，不过要注意叶子结点的判断
 
+
+//方法一：
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        
+         return (root==NULL)?0:(root->left == nullptr || root->right == nullptr)?(root->left ==nullptr)?minDepth(root->right)+1:minDepth(root->left)+1:
+                 min(minDepth(root->left),minDepth(root->right))+1;
+ 
+    }
+};
+
+
+
+//方法二：
 class Solution {
 public:
     int minDepth(TreeNode* root) {
