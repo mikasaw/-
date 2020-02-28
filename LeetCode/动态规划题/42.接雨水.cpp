@@ -41,3 +41,31 @@ public:
         return result;
     }
 };
+
+
+
+
+//2.用栈的方法  遇到比栈顶元素小的就入栈，大的就把栈顶元素取出，进行中间的体积计算
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        stack<int>s;
+        int cur = 0,result = 0;
+        while(cur<height.size())
+        {
+            while(height[cur] > height[s.top()] || !s.empty())                  //遇到比栈顶元素大的就把栈顶元素取出
+            {
+                if(s.empty())
+                break;
+                int stop = s.top();
+                s.pop();    
+                int dist = cur -stop -1;                                        //计算两个柱子之间的距离
+                int heg = min(height[stop],height[cur])-height[stop];           //找到最小的高度
+                result += heg * dist;                                           //计算体积
+            }
+            s.push(cur);
+            cur++;
+        }
+        return result;
+    }
+};
