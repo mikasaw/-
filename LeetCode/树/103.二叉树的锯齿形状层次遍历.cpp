@@ -98,12 +98,12 @@ public:
             int size = dq.size();
             vector<int> val;
             while (size) { 
-                if (flag) {                                 // 前取后放
+                if (flag) {                                    // 前取后放
                     cur = dq.front();
                     dq.pop_front();
-                    if (cur->left) dq.push_back(cur->left); // 下一层顺序存放至尾
+                    if (cur->left) dq.push_back(cur->left);    // 下一层顺序存放至尾
                     if (cur->right) dq.push_back(cur->right);                
-                } else {                                     // 后取前放
+                } else {                                       // 后取前放
                     cur = dq.back();
                     dq.pop_back();
                     if (cur->right) dq.push_front(cur->right); // 下一层逆序存放至首
