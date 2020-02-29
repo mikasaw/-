@@ -37,3 +37,22 @@ public:
       return max2;  
     }
 };
+
+
+//动态规划法
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        vector<int> dp (nums.size());
+        if(nums.size() == 0)
+         return 0;
+         dp[0] = nums[0];
+        int max1 = nums[0];
+        for(int i = 1;i<nums.size();i++)
+        {
+            dp[i] = max(nums[i],dp[i-1]+nums[i]);
+            max1 = max(dp[i] ,max1);
+        }
+      return  max1;
+    }
+};
