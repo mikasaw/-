@@ -56,3 +56,21 @@ public:
       return  max1;
     }
 };
+
+
+//动态规划再简化
+public:
+    int maxSubArray(vector<int>& nums) {
+        if(nums.size() == 0)
+         return 0;
+         int dp =nums[0];
+        int max1 = nums[0];
+        for(int i = 1;i<nums.size();i++)
+        {
+            dp = max(nums[i],dp+nums[i]);
+            max1 = max(dp ,max1);
+        }
+      return  max1;
+    }
+};
+
