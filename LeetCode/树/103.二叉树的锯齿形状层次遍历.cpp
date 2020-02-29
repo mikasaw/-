@@ -75,3 +75,49 @@ public:
     }
      
 };
+
+
+
+
+
+
+
+
+//利用双向队列deque特性   改变元素的出队方式
+class Solution {
+public:
+
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+         vector<vector<int>> ans;
+        if (root == NULL) return ans;
+        deque<TreeNode*> dq;
+        dq.push_back(root);
+        bool flag = true;
+        TreeNode* cur;
+        while (!dq.empty()) {
+            int size = dq.size();
+            vector<int> val;
+            while (size) { 
+                if (flag) {                                 // 前取后放
+                    cur = dq.front();
+                    dq.pop_front();
+                    if (cur->left) dq.push_back(cur->left); // 下一层顺序存放至尾
+                    if (cur->right) dq.push_back(cur->right);                
+                } else {                                     // 后取前放
+                    cur = dq.back();
+                    dq.pop_back();
+                    if (cur->right) dq.push_front(cur->right); // 下一层逆序存放至首
+                    if (cur->left) dq.push_front(cur->left);
+                }
+                val.push_back(cur->val);
+                --size;
+            }
+            flag = !flag;
+            ans.push_back(val);
+        }
+        return ans;
+
+
+    }
+     
+};
