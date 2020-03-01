@@ -14,7 +14,7 @@
 
 
 
-//采用中心法，从中间往两边寻找
+//采用中心法，从中间往两边寻找，找到最大的回文子串长度，在从原来的字符串截断
 class Solution {
 public:
     string longestPalindrome(string s) {    
