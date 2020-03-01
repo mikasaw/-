@@ -24,7 +24,7 @@ public:
         int size = nums.size();
         if(size <= 2)
            return ans;
-        sort(nums.begin(),nums.end());
+        sort(nums.begin(),nums.end());   //先把数组排序
        for(int i = 0;i<size -2 ;i++)
        {
            int tmp = nums[i];
