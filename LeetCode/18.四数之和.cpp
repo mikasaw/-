@@ -56,7 +56,9 @@ public:
                     }
                 }
                 else if(leftval + rightval < val)
-                {left ++ ;}
+                {
+                  left ++ ;
+                }
                 else if(leftval + rightval > val)
                 {
                     right--;
