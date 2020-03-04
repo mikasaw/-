@@ -37,7 +37,7 @@ public:
            {
                int leftval = nums[left];
                int rightval = nums[right];
-               if(left + right == val)
+               if(leftval + rightval == val)
                {vector<int>tmpvec{tmp,left,right};
                 ans.push_back(tmpvec);
                 while(left < right && nums[left] == leftval)    //除去重复数字
