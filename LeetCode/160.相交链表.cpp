@@ -48,3 +48,28 @@ public:
     }
 };
 
+
+
+//使用hashset方法
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode * first  = headA;
+        ListNode* second = headB;
+        unordered_set<ListNode* > set;
+        while(first)
+        {
+            set.insert(first);
+            first= first->next;
+        }
+        while(second)
+        {
+            if(set.find(second) != set.end())
+            {
+                return second;
+            }
+            second = second->next;
+        }
+     return nullptr;
+    }
+};
