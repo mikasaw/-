@@ -29,7 +29,7 @@
 程序尽量满足 O(n) 时间复杂度，且仅用 O(1) 内存。
 
 
-//双指针法
+//暴力法
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -71,5 +71,23 @@ public:
             second = second->next;
         }
      return nullptr;
+    }
+};
+
+
+
+//双指针法
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+      if(headA == nullptr  || headB == nullptr) return nullptr;
+      ListNode * first = headA;
+      ListNode * second = headB;
+      while(first != second)
+      {
+          first = (first == nullptr ? headB:first->next);
+          second = (second == nullptr? headA:second->next);
+      }
+      return first;
     }
 };
