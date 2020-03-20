@@ -21,9 +21,9 @@ nums2 = [2,5,6],       n = 3
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        for(int i = m ,j=0;i<nums1.size() && j<n;i++,j++)
+        for(int i = m ;i<nums1.size() ;i++)
         {
-            nums1[i] = nums2[j];
+            nums1[i] = nums2[i-m];
         }
         sort(nums1.begin(),nums1.end());
     }
