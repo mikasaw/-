@@ -49,11 +49,11 @@ public:
                     right--;
                 }
                }
-               else  if (leftval + rightval < tmp)
+               else  if (leftval + rightval < val)
                 {
                     left ++;
                 }
-                else if(leftval + rightval> tmp)
+                else if(leftval + rightval> val)
                 {
                     right--;
                 }
