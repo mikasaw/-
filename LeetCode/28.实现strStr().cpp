@@ -98,3 +98,14 @@ public:
     }
 };
 
+
+
+//调用String类的成员函数
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+      if(needle.empty()) return 0;
+      int pos = haystack.find(needle);
+      return pos;
+    }
+};
